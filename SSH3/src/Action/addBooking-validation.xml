@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC 
+  "-//OpenSymphony Group//XWork Validator 1.0.2//EN" 
+  "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+ <validator type="requiredstring" short-circuit="true">
+  <param name="fieldname">book.username</param>
+  <message> 姓名不能为空</message>
+ </validator>
+ <validator type="requiredstring" short-circuit="true">
+  <param name="fieldname">book.sex</param>
+  <message> 性别不能为空</message>
+ </validator>
+  <validator type="fieldexpression">
+  <param name="fieldname">book.sex</param>
+  <param name="expression"><![CDATA[(book.sex.equals("男") || book.sex.equals("女"))]]></param>
+  <message> 性别必须是男或者女</message>
+ </validator>
+ <validator type="requiredstring" short-circuit="true">
+  <param name="fieldname">book.origin</param>
+  <message> 出发地不能为空</message>
+ </validator>
+ <validator type="requiredstring" short-circuit="true">
+  <param name="fieldname">book.destn</param>
+  <message> 目的地不能为空</message>
+ </validator>
+  <validator type="required" short-circuit="true">
+  <param name="fieldname">book.date</param>
+  <message> 出发时间不能为空</message>
+ </validator>
+
+ <validator type="requiredstring" short-circuit="true">
+  <param name="fieldname">book.id</param>
+  <message> 身份证不能为空</message>
+ </validator>
+
+</validators>
