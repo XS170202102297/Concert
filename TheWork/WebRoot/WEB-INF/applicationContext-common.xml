@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+						
+	<!-- 普通JDBC连接，取代 hiberbnate.cfg.xml -->
+	<bean id="candy" class="org.apache.commons.dbcp.BasicDataSource">
+		<!-- 驱动程序 -->
+		<property name="driverClassName"
+			value="com.microsoft.sqlserver.jdbc.SQLServerDriver">
+		</property>
+		<!-- 连接字符串 -->
+		<property name="url"
+			value="jdbc:sqlserver://localhost:1433;DatabaseName=MusicDB">
+		</property>
+		<property name="username" value="sa"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+
+	<!-- 创建SessionFactory，取代HiberbnateSessionFactory.java -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- setter注入 -->
+		<property name="dataSource">
+			<ref bean="candy" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect"> <!-- 数据库方言 -->
+					org.hibernate.dialect.SQLServerDialect
+				</prop>
+				<prop key="hibernate.jdbc.use_scrollable_resultset">false</prop>
+			</props>
+		</property>
+		<!-- 说明持久化类映射文件 -->
+		<property name="mappingResources">
+			<list>
+				<value>com/system/management/model/Ticket.hbm.xml</value>
+				<value>com/system/management/model/Seat.hbm.xml</value>
+				<value>com/system/order/model/Order.hbm.xml</value>
+				<value>com/system/concert/model/Concert.hbm.xml</value>
+				<value>models/User.hbm.xml</value>
+				<value>com/system/management/model/Booking.hbm.xml</value>
+				<value>com/system/management/model/Customer.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

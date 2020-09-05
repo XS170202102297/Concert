@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- 登录注册 -->
+	<bean id="userAction" class="action.UserAction">
+		<property name="ud">
+			<ref bean="ud" />
+		</property>
+	</bean>
+	
+	<bean id="userExitAction" class="action.userExitAction" scope="prototype">
+ 	</bean>
+	
+	<!-- action的bean定义 -->
+	<bean id="addTicketAction" class="com.system.management.action.AddTicketAction" scope="prototype">
+		<property name="td">
+			<ref bean="td"/>
+		</property>
+	</bean>
+	<bean id="queryAction" class="com.system.management.action.QueryAction" scope="prototype">
+		<property name="td">
+			<ref bean="td"/>
+		</property>
+	</bean>
+	<bean id="queryActionByCon" class="com.system.management.action.QueryActionByCon" scope="prototype">
+		<property name="td">
+			<ref bean="td"/>
+		</property>
+	</bean>
+	<bean id="queryActionById" class="com.system.management.action.QueryActionById" scope="prototype">
+		<property name="td">
+			<ref bean="td"/>
+		</property>
+	</bean>
+	<bean id="addSeatAction" class="com.system.management.action.AddSeatAction" scope="prototype">
+		<property name="sd">
+			<ref bean="sd"/>
+		</property>
+	</bean>
+	<bean id="aSeatAction" class="com.system.management.action.ASeatAction" scope="prototype">
+		<property name="sd">
+			<ref bean="sd"/>
+		</property>
+	</bean>
+	<bean id="deleteConAction" class="com.system.management.action.DeleteConAction" scope="prototype">
+		<property name="td">
+			<ref bean="td"/>
+		</property>
+	</bean>
+	<bean id="deleteSeatAction" class="com.system.management.action.DeleteSeatAction" scope="prototype">
+		<property name="sd">
+			<ref bean="sd"/>
+		</property>
+	</bean>
+	<bean id="updateConAction" class="com.system.management.action.UpdateConAction" scope="prototype">
+		<property name="td">
+			<ref bean="td"/>
+		</property>
+	</bean>
+	<bean id="updateSeatAction" class="com.system.management.action.UpdateSeatAction" scope="prototype">
+		<property name="sd">
+			<ref bean="sd"/>
+		</property>
+	</bean>
+	<!-- 获取所有演唱会信息  -->	
+	<bean id="getConcertAction" class="com.system.concert.action.getConcertAction" scope="prototype"> 
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<!-- 模糊搜索 -->
+	<bean id="queryConcertByCriteria" class="com.system.concert.action.queryConcertByCriteria" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<!-- 价格排序查询  -->	
+	<bean id="queryConcertOrderByPrice" class="com.system.concert.action.queryConcertOrderByPrice" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<bean id="queryConcertOrderByTime" class="com.system.concert.action.queryConcertOrderByTime" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	<!-- 根据城市查询  -->
+	<bean id="queryConcertByBj" class="com.system.concert.action.queryConcertByCityBj" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<bean id="queryConcertBySh" class="com.system.concert.action.queryConcertByCitySh" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<bean id="queryConcertByGz" class="com.system.concert.action.queryConcertByCityGz" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<!-- 根据性别查询  -->
+	<bean id="queryConcertByMale" class="com.system.concert.action.queryConcertBySexMale" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<bean id="queryConcertByFemale" class="com.system.concert.action.queryConcertBySexFemale" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	
+	<!-- 购买  -->
+	<bean id="queryConcertById" class="com.system.concert.action.queryConcertById" scope="prototype">
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	<bean id="loginAction" class="com.system.management.action.LoginAction" scope="prototype">
+		<property name="ad">
+			<ref bean="ad"/>
+		</property>
+	</bean>
+	
+	<bean id="registerAction" class="com.system.management.action.RegAction" scope="prototype">
+		<property name="ad">
+			<ref bean="ad"/>
+		</property>
+	</bean>
+	
+	<bean id="addBook" class="com.system.management.action.addBooking" scope="prototype" >
+		<property name="bd">
+			<ref bean="bd"/>
+		</property>
+	</bean>
+	
+	<bean id="getBook" class="com.system.management.action.getBooking"   >
+		<property name="bd">
+			<ref bean="bd"/>
+		</property>
+	</bean>
+	<bean id="updateTicketAction" class="com.system.management.action.updateTicket" >
+		<property name="bd">
+			<ref bean="bd"/>
+		</property>
+	</bean>
+		<bean id="deleteTicketAction" class="com.system.management.action.deleteTicket" scope="prototype" >
+		<property name="bd">
+			<ref bean="bd"/>
+		</property>
+	</bean>
+		<bean id="queryTicketById" class="com.system.management.action.queryTicketById" scope="prototype">
+		<property name="bd">
+			<ref bean="bd"/>
+		</property>
+	</bean>
+		<bean id="changePasswordAction" class="com.system.management.action.changePasswordAction" >
+		<property name="ad">
+			<ref bean="ad"/>
+		</property>
+	</bean>
+	<bean id="exitAction" class="com.system.management.action.exitSystem" scope="prototype">
+		<property name="bd">
+			<ref bean="bd"/>
+		</property>
+	</bean>
+	<bean id="queryTicketByCriteriaAction" class="com.system.management.action.queryTicketByCriteria" scope="prototype" >
+		<property name="bd">
+			<ref bean="bd"/>
+		</property>
+	</bean>
+	<bean id="updatePriceAction" class="com.system.order.action.UpdatePriceAction" scope="prototype">
+		<property name="od">
+			<ref bean="od"/>
+		</property>
+		<property name="cd">
+			<ref bean="cd"/>
+		</property>
+	</bean>
+	<bean id="addOrderAction" class="com.system.order.action.AddOrderAction" scope="prototype">
+		<property name="od">
+			<ref bean="od"/>
+		</property>
+		
+	</bean>
+	<bean id="deleteOrderAction" class="com.system.order.action.DeleteOrderAction" scope="prototype">
+		<property name="od">
+			<ref bean="od"/>
+		</property>
+		
+	</bean>
+	<bean id="queryOrderAction" class="com.system.order.action.QueryOrderAction" scope="prototype">
+		<property name="od">
+			<ref bean="od"/>
+		</property>
+		
+	</bean>
+	<bean id="queryOrder" class="com.system.order.action.QueryOrder" scope="prototype">
+		<property name="od">
+			<ref bean="od"/>
+		</property>
+		
+	</bean>
+</beans>

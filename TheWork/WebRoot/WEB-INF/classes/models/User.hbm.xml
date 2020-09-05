@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="models.User" table="[Users]">
+		<id name="id2" column="id2" > <!-- 配置主键 -->
+			<generator class="native"/>
+		</id>
+		<!-- 配置其他属性 -->
+		<property name="username" length="20"/>
+		<property name="password" length="20"/>
+		<property name="sex" length="2"/>
+		<property name="age"/>
+		<property name="email" length="50"/>
+		<property name="mobilePhone" length="20"/>
+
+	</class>
+</hibernate-mapping>

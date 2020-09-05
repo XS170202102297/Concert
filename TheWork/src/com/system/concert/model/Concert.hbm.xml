@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.system.concert.model.Concert" table="TicketManagement">
+		<id name="ticketid" column="ticketid">
+         <generator class="native" /> <!-- 配置的是自动增长标识列 -->
+        </id>
+        <property name="ticketName"/>
+        <property name="singer" />
+        <property name="day" />
+        <property name="time" />
+        <property name="place" />
+        <property name="kind" />
+         <property name="price" />
+	</class>
+</hibernate-mapping>

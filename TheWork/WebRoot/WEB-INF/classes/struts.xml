@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<package name="default" extends="struts-default">
+	<!-- 登录注册  -->	
+	 		<interceptors>
+				<interceptor name="LoginCheck" class="com.oc.interceptor.LoginCheck"/>
+			</interceptors>	 
+			
+	 	<action name="login_*" class="userAction" method="{1}">
+			<!--  <result name="{1}">/customer/{1}_success.jsp</result>-->
+			<result name="login">/mainConcert.jsp</result>
+			<result name="register">RegisterSuccess.jsp</result>
+			<result name="input">user_{1}.jsp</result>
+		</action>
+		<action name="user_*" class="userAction" method="{1}">
+			<interceptor-ref name="LoginCheck"/>
+			<interceptor-ref name="defaultStack"/>
+			<result name="updatePassword">/main.jsp</result>
+			<result name="showInfo">/main.jsp</result>
+			<result name="input">user_{1}.jsp</result>
+			<result name="check">user_login.jsp</result>
+		</action>
+		
+		
+		<action name="userExitAction" class="userExitAction">
+  			<result name="success" type="redirect">main.jsp</result>
+ 		</action>	
+		
+	<!--  -->
+		
+		<action name="addTicketAction" class="addTicketAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/AddCon.jsp</result>
+		</action>
+		<action name="queryAction" class="queryAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/Success.jsp</result>
+		</action>
+		<action name="queryActionById" class="queryActionById">
+			<result name="success">/AddSeat.jsp</result>
+			<result name="input">/Success.jsp</result>
+		</action>
+		<action name="queryActionByCon" class="queryActionByCon">
+			<result name="success">/ConDetail.jsp</result>
+			<result name="input">/Success.jsp</result>
+		</action>
+		<action name="addSeatAction" class="addSeatAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/AddSeat.jsp</result>
+		</action>
+		<action name="aSeatAction" class="aSeatAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/AddSeat.jsp</result>
+		</action>
+		<action name="deleteConAction" class="deleteConAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/Success.jsp</result>
+		</action>
+		<action name="deleteSeatAction" class="deleteSeatAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/AddSeat.jsp</result>
+		</action>
+		<action name="updateConAction" class="updateConAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/ConDetail.jsp</result>
+		</action>
+		<action name="updateSeatAction" class="updateSeatAction">
+			<result name="success">/Success.jsp</result>
+			<result name="input">/AddSeat.jsp</result>
+		</action>
+		
+		<!-- 获取所有演唱会信息  -->	
+		<action name="getConcertAction" class="getConcertAction" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		
+		<!-- 模糊搜索 -->	
+		<action name="queryConcertByCriteria" class="queryConcertByCriteria" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		
+		<!-- 价格排序查询  -->	
+		<action name="queryConcertOrderByPrice" class="queryConcertOrderByPrice" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		
+		<action name="queryConcertOrderByTime" class="queryConcertOrderByTime" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		<!-- 根据城市查询  -->	
+		<action name="queryConcertByBj" class="queryConcertByBj" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		
+		<action name="queryConcertBySh" class="queryConcertBySh" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		
+		<action name="queryConcertByGz" class="queryConcertByGz" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		
+		<!-- 根据性别查询  -->
+		<action name="queryConcertByMale" class="queryConcertByMale" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>	
+		
+		<action name="queryConcertByFemale" class="queryConcertByFemale" >
+			<result name="success">/main.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>	
+		
+		<!-- 购买  -->
+		<action name="queryConcertById" class="queryConcertById" >
+			<result name="success">/buy.jsp</result>
+			<result name="input">/searchingNoFound.jsp</result>
+		</action>
+		<action name="updatePriceAction" class="updatePriceAction" >
+			<result name="success">/OrderPrice.jsp</result>
+			<result name="input">/buy.jsp</result>
+		</action>
+		<action name="loginAction" class="loginAction" >
+			<result name="success">/Management.jsp</result>
+			<result name="input">/RegLogin.jsp</result>
+		</action>
+		
+		<action name="registerAction" class="registerAction" >
+			<result name="success">/RegLogin.jsp</result>
+			<result name="input">/A-Reg.jsp</result>
+		</action>
+		
+			<action name="addBook" class="addBook" >
+			<interceptor-ref name="defaultStack"/>
+			
+			<result name="success">/UserInf.jsp</result>
+			<result name="input">/Booking.jsp</result>
+			<result name="login">/RegLogin.jsp</result>
+		</action>
+		
+		<action name="getBook" class="getBook">
+			<result name="success">/AllUser.jsp</result>
+		</action>
+		
+		<action name="updateTicketAction" class="updateTicketAction">
+			<result name="success">/AllUser.jsp</result>
+			<result name="input">/UpdateUser.jsp</result>
+		</action>
+		<action name="deleteTicketAction" class="deleteTicketAction">
+			<result name="success">/AllUser.jsp</result>
+			<result name="input">/AllUser.jsp</result>
+		</action>
+		
+		<action name="queryTicketById" class="queryTicketById">
+			<result name="success">/UpdateUser.jsp</result>
+			<result name="input">/AllUser.jsp</result>
+		</action>
+		
+		<action name="changePasswordAction" class="changePasswordAction">
+			<result name="success">/RegLogin.jsp</result>
+		</action>
+		
+		<action name="exitAction" class="exitAction">
+			<result name="success">/RegLogin.jsp</result>
+		</action>
+		
+		<action name="queryTicketByCriteriaAction" class="queryTicketByCriteriaAction">
+			<result name="success">/QueryResultUser.jsp</result>
+			<result name="input">/QueryTicketByCriteria.jsp</result>
+		</action>
+		<action name="addOrderAction" class="addOrderAction">
+			<result name="success">/order.jsp</result>
+			<result name="input">/OrderPrice.jsp</result>
+		</action>
+		<action name="deleteOrderAction" class="deleteOrderAction">
+			<result name="success">/main.jsp</result>
+			<result name="input">/order.jsp</result>
+		</action>
+		<action name="queryOrderAction" class="queryOrderAction">
+			<result name="success">/MyOrder.jsp</result>
+			<result name="input">/MyOrder.jsp</result>
+		</action>
+		<action name="queryOrder" class="queryOrder">
+			<result name="success">/orderDetial.jsp</result>
+			<result name="input">/MyOrder.jsp</result>
+		</action>
+	</package>
+</struts>
